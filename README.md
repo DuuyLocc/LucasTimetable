@@ -37,6 +37,6 @@ master -> develop -> feature/solution_folder -> create pull request to develop -
 - http://www.lucasitstore.tk/
 - http://www.youtube.com/
 ## Install Entity Framework core 
-.NET Core CLI v3.1.9: Microsoft.EntityFrameworkCore.SqlServer
-Get the .NET Core CLI tools v3.1.9: Microsoft.EntityFrameworkCore.Design
-Get the Package Manager Console tools v3.1.9: Microsoft.EntityFrameworkCore.Tools
+- .NET Core CLI v3.1.9: Microsoft.EntityFrameworkCore.SqlServer
+- Get the .NET Core CLI tools v3.1.9: Microsoft.EntityFrameworkCore.Design
+- Get the Package Manager Console tools v3.1.9: Microsoft.EntityFrameworkCore.Tools
