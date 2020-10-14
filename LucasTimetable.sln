@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasTimetable.Data", "LucasTimetable.Data\LucasTimetable.Data.csproj", "{307F430A-C05A-4A00-BB05-D0F24102E063}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasTimetable.Application", "LucasTimetable.Application\LucasTimetable.Application.csproj", "{9B3D4171-8D95-4A4A-90E2-F826A2C01861}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
