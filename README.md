@@ -69,8 +69,12 @@ Install EF (Entity Framework) core
 
 ## Lesion 8 - Cấu hình entity với Fluent API | configure entity with Fluent API
 - ORM: Object Relational Mapping (quản lý các object, table thông qua class)
-https://viblo.asia/p/object-relational-mapping-djeZ1PQ3KWz
+- https://viblo.asia/p/object-relational-mapping-djeZ1PQ3KWz
 
 ## Lesion 9 - Migration database
--Microsoft.Extensions.Configuration.FileExtensions 3.1.9
--Microsoft.Extensions.Configuration.Json 3.1.9
+- Microsoft.Extensions.Configuration.FileExtensions 3.1.9
+- Microsoft.Extensions.Configuration.Json 3.1.9
+- Lệnh thêm: Add-Migration _name_
+- Thực thi: update-database
+
+## Lesion 10 - Ddataa seeding tạo (data mẫu)
