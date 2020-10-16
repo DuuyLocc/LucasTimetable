@@ -1,15 +1,26 @@
-# PROJECT TIMETABLE WITH ASP.NET CORE 3.1 FROM LUCAS
-## Technologies
+﻿# PROJECT TIMETABLE WITH ASP.NET CORE 3.1 FROM LUCAS
+## Link about project
+- http://www.lucasitstore.tk/
+- https://docs.microsoft.com/en-us/ef/core/get-started/install/
+- https://www.learnentityframeworkcore.com/configuration/fluent-api
+
+## ANOTHERS
+- Crystal report
+
+## Lesion 1 - Introduce ASP.NET MVC core source
+Technologies
 - ASP.NET CORE 3.1
 - Entity framework core 3.1
 - SQL 2019 v18.6
 - C# 8.0
-## Required skill
+
+Required skill
 - HTML & CSS
 - Javascript basic
 - C# basic
 - SQL sever basic
-## Development enviroment
+
+## Lesion 2 - setup development enviroment
 - SDK
 - SQL
 - Visual studio
@@ -18,7 +29,8 @@
 Bonnus: 
 - Git extensions for Visual studio
 - SQL sever management tool
-## Introduce
+
+## Lesion 3 - create solution and source code repository
 - models
 - views
 - controllers
@@ -28,11 +40,37 @@ Bonnus:
 - startup
 - dependencies
 - properties
-## Git flow
+
+## Lesion 4 - create solution structure
+Git flow
 master -> develop -> feature/solution_folder -> create pull request to develop -> bugfix/fix_error_start -> create pull request to develop
-## Solution structure
-- N layer (data, business, presentation) data driven design
+
+Solution structure
+- *N layer (data, business, presentation) data driven design
 - DDD (domain driven design)
-## Link about project
-- http://www.lucasitstore.tk/
-- http://www.youtube.com/
+
+WebApplication: Request pipeline
+## Lesion 5 - design function
+
+## Lesion 6 - design database
+
+## Lesion 7 - create entity class and setup EF core
+CÓ 2 CÁCH CẤU HÌNH KIỂU DỮ LIỆU GIÚP GENNERATION DATABASE
+- altribute configuration (chỉ ra thẳng)
+- *fluent API configuration (tách riêng ra)
+
+Design database
+- table: work
+
+Install EF (Entity Framework) core 
+- .NET Core CLI v3.1.9: Microsoft.EntityFrameworkCore.SqlServer
+- Get the .NET Core CLI tools v3.1.9: Microsoft.EntityFrameworkCore.Design
+- Get the Package Manager Console tools v3.1.9: Microsoft.EntityFrameworkCore.Tools
+
+## Lesion 8 - Cấu hình entity với Fluent API | configure entity with Fluent API
+- ORM: Object Relational Mapping (quản lý các object, table thông qua class)
+https://viblo.asia/p/object-relational-mapping-djeZ1PQ3KWz
+
+## Lesion 9 - Migration database
+-Microsoft.Extensions.Configuration.FileExtensions 3.1.9
+-Microsoft.Extensions.Configuration.Json 3.1.9
