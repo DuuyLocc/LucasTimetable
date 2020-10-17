@@ -26,6 +26,7 @@ Required skill
 - Visual studio
 - Git client
 - Nodejs
+
 Bonnus: 
 - Git extensions for Visual studio
 - SQL sever management tool
