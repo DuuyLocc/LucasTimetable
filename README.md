@@ -56,7 +56,7 @@ WebApplication: Request pipeline
 ## Lesion 6 - design database
 
 ## Lesion 7 - create entity class and setup EF core
-CÓ 2 CÁCH CẤU HÌNH KIỂU DỮ LIỆU GIÚP GENNERATION DATABASE
+CÓ 2 CÁCH CẤU HÌNH KIỂU DỮ LIỆU GIÚP MIGRATION DATABASE
 - altribute configuration (chỉ ra thẳng)
 - *fluent API configuration (tách riêng ra)
 
