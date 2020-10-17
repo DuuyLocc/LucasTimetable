@@ -57,7 +57,8 @@ WebApplication: Request pipeline
 
 ## Lesion 7 - create entity class and setup EF core
 CÓ 2 CÁCH CẤU HÌNH KIỂU DỮ LIỆU GIÚP MIGRATION DATABASE
-- altribute configuration (chỉ ra thẳng)
+- altribute configuration (chỉ ra thẳng) 
+-- Data Annotations Attributes (https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes)
 - *fluent API configuration (tách riêng ra)
 
 Design database
