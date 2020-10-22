@@ -18,7 +18,7 @@ namespace LucasTimetable.Data.Configurations
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Description).HasMaxLength(100);
             builder.Property(x => x.Status).HasDefaultValue(Status.todo);
-            builder.Property(x => x.Driority).HasDefaultValue(Priority.no);
+            builder.Property(x => x.Priority).HasDefaultValue(Priority.yes);
 
 
         }

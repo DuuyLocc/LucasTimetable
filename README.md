@@ -80,4 +80,7 @@ Install EF (Entity Framework) core
 - Lệnh thêm: Add-Migration _name_
 - Thực thi: update-database
 
-## Lesion 10 - Ddataa seeding tạo (data mẫu)
+## Lesion 10 - data seeding tạo (data mẫu)
+- tạo data mồi cho data mẫu (data trống) clear code
+- Model seed data (https://docs.microsoft.com/en-us/ef/core/modeling/data-seeding)
+- tạo dataseeding -> migration lại -> update-database 

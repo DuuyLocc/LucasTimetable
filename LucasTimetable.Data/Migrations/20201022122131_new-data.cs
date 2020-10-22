@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LucasTimetable.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class newdata : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,9 +71,9 @@ namespace LucasTimetable.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     Description = table.Column<string>(maxLength: 100, nullable: true),
-                    Status = table.Column<int>(nullable: false, defaultValue: 0),
-                    Driority = table.Column<int>(nullable: true, defaultValue: 1),
-                    Deadline = table.Column<DateTime>(nullable: true)
+                    Status = table.Column<int>(nullable: true, defaultValue: 0),
+                    Priority = table.Column<int>(nullable: true, defaultValue: 1),
+                    Deadline = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

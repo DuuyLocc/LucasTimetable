@@ -6,7 +6,7 @@ namespace LucasTimetable.Data.Enums
 {
     public enum Priority
     {
-        yes,
-        no
+        no,
+        yes
     }
 }
