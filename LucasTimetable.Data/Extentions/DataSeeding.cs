@@ -19,7 +19,7 @@ namespace LucasTimetable.Data.Extentions
                 new AppConfig() { Key = "HomeDescription", Value = "This is description of LucasTimetable" }
                 );
 
-            var roleId = new Guid("7E2DE1EE-B97B-4698-ABE4-C22A0332B2C9");
+            var roleId  = new Guid("7E2DE1EE-B97B-4698-ABE4-C22A0332B2C9");
             var roleId2 = new Guid("DDCFD40F-0C20-4BBD-AFBF-5936032DDDE5");
             var adminId = new Guid("8DD4E4E7-CBB1-4DB8-8CD8-3024401AFC74");
 
@@ -69,7 +69,7 @@ namespace LucasTimetable.Data.Extentions
                 {
                     Id = 1,
                     Name = "Note timetable",
-                    Description = "make a plan",
+                    Description = "Make a plan",
                     Status = Status.todo,
                     Priority = Priority.yes,
                     Deadline = new DateTime(2020, 10, 23)
