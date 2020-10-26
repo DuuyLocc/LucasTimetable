@@ -88,3 +88,5 @@ Install EF (Entity Framework) core
 - tạo data mồi cho data mẫu (data trống) clear code
 - Model seed data (https://docs.microsoft.com/en-us/ef/core/modeling/data-seeding)
 - tạo dataseeding -> migration lại -> update-database 
+
+## Lesion 11 - 
