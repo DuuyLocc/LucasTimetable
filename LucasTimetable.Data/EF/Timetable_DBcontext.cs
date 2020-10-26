@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using LucasTimetable.Data.Configurations;
 using LucasTimetable.Data.Entities;
+using LucasTimetable.Data.Extentions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace LucasTimetable.Data.EF
@@ -13,13 +15,23 @@ namespace LucasTimetable.Data.EF
         {
         }
 
-        //Configuation using Fluent API
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Configuation using Fluent API
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguaration());
             modelBuilder.ApplyConfiguration(new AppUserConfiguaration());
             modelBuilder.ApplyConfiguration(new WorkConfiguration());
+
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
+
+            //data seeding
+            modelBuilder.Seed();
             /*base.OnModelCreating(modelBuilder);*/
         }
 
