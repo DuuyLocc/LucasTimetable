@@ -4,6 +4,10 @@
 - https://docs.microsoft.com/en-us/ef/core/get-started/install/
 - https://www.learnentityframeworkcore.com/configuration/fluent-api
 
+## Group trao đổi
+- Học lập trình ASP.NET MVC 5
+- Góc IT - Cùng học lập trình
+
 ## ANOTHERS
 - Crystal report
 
