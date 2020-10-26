@@ -89,4 +89,4 @@ Install EF (Entity Framework) core
 - Model seed data (https://docs.microsoft.com/en-us/ef/core/modeling/data-seeding)
 - tạo dataseeding -> migration lại -> update-database 
 
-## Lesion 11 - 
+## Lesion 11 - Add ASP.NET Identity tables
