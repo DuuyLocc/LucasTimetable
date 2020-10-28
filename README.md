@@ -90,3 +90,6 @@ Install EF (Entity Framework) core
 - tạo dataseeding -> migration lại -> update-database 
 
 ## Lesion 11 - Add ASP.NET Identity tables
+- ASP.NET Core Identity là gì? (https://tedu.com.vn/kien-thuc/cai-dat-va-su-dung-aspnet-identity-core-va-identity-server-4-trong-ung-dung-aspnet-core-270.html)
+- Identity library
+- create project with authentication: Individual user account
