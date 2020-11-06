@@ -93,10 +93,12 @@ Install EF (Entity Framework) core
 - ASP.NET Core Identity là gì? (https://tedu.com.vn/kien-thuc/cai-dat-va-su-dung-aspnet-identity-core-va-identity-server-4-trong-ung-dung-aspnet-core-270.html)
 - Identity library: IdentityDbContext
 - File > New > Project -> ASP.NET Core Web Application -> Web Application -> Authentication -> Individual user account -> OK
+- tables is: AppUser, AppRole, AppUserClaims, AppRoleClaims, AppUserRoles, AppUserLogins, AppUserTokens
 
 ## Lesion 12 - create application layer structure (tầng application = sevice)
 - Logic: feature/sevice_layer -> create modul catalog/ system/
 - Keyword: SOLID -> Dependence inverse -> dependence Injection pattern; View model; SOLID Principles
+- tất cả phương thức của 1 class được định nghĩa qua interface
 
 
 

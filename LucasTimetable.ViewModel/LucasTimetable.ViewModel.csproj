@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Constants\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="System\Users\" />
+    <Folder Include="System\Roles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LucasTimetable.Data\LucasTimetable.Data.csproj" />
+  </ItemGroup>
+
+</Project>
