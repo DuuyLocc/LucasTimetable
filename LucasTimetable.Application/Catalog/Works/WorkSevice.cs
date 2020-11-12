@@ -33,7 +33,8 @@ namespace LucasTimetable.Application.Catalog.Works
                 Deadline = request.Deadline
             };
             _context.Works.Add(work);
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return work.Id;
         }
 
         public async Task<int> Delete(string workId)
@@ -104,6 +105,24 @@ namespace LucasTimetable.Application.Catalog.Works
                 Items = data
             };
             return pagedResult;
+        }
+
+        public async Task<WorkViewModel> GetById(int workId)
+        {
+            var work = await _context.Works.FindAsync(workId);
+            if (work == null)
+                throw new LucasTimetable_Exceptions($"không tìm thấy Id: {workId}");
+            
+            var works = new WorkViewModel()
+            {
+                Name = work.Name,
+                Description = work.Description,
+                Status = (Data.Enums.Status)work.Status,
+                Priority = (Data.Enums.Priority)work.Priority,
+                Deadline = work.Deadline
+            };
+
+            return works;
         }
 
         public async Task<int> Update(string id, WorkUpdateRequest request)

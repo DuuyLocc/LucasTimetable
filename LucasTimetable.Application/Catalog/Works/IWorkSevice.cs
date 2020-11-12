@@ -15,10 +15,10 @@ namespace LucasTimetable.Application.Catalog.Works
 
         Task<int> Delete(string workId);
 
+        Task<WorkViewModel> GetById(int workId);
+
         Task<List<WorkViewModel>> GetAll();
 
         Task<PagedResult<WorkViewModel>> GetAllpaging(WorkPagingRequest request);
-
-
     }
 }
