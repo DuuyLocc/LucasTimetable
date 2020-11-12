@@ -100,5 +100,20 @@ Install EF (Entity Framework) core
 - Keyword: SOLID -> Dependence inverse -> dependence Injection pattern; View model; SOLID Principles
 - tất cả phương thức của 1 class được định nghĩa qua interface
 
+## Lesion 13 - create search and paging method
+## Lesion 14 - update product method
+## Lesion 15 - thêm bảng hình ảnh (nope)
+## Lesion 16 - thêm phương thức quản lý hình ảnh (nope)
+- Adding: Microsoft.AspNetCore.Hosting & Microsoft.Extensions.Hosting & Microsoft.AspNetCore.Hosting.Abstractions
+- edit project file -> delete 2 reference -> <frameworkReference Include="Microsoft.AspNetCore.App" /> 
+## Lesion 17 - create web api BackendApi
+- BackendApi -> delete view -> set startup project -> create controller 
+-> config connectionstring: appsettings.Development.json 
+-> config connectionstring in startup: ConfigureServices -> add reference 
+-> 
+## Lesion 18 - add Swagger to web api
+- Install Swagger: Swashbuckle.AspNetCore 
+
+
 
 

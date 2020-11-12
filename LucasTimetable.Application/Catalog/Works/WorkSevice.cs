@@ -2,10 +2,13 @@
 using LucasTimetable.Data.Entities;
 using LucasTimetable.ViewModel.Catalog.Works;
 using LucasTimetable.ViewModel.Common;
+using LucasTimetable.ViewModel.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace LucasTimetable.Application.Catalog.Works
 {
@@ -33,24 +36,91 @@ namespace LucasTimetable.Application.Catalog.Works
             return await _context.SaveChangesAsync();
         }
 
-        public async Task<int> Delete(int workId)
+        public async Task<int> Delete(string workId)
         {
-            throw new NotImplementedException();
+            var work = await _context.Works.FindAsync(workId);
+            if (work == null)
+            {
+                throw new LucasTimetable_Exceptions($"Không tìm thấy bản ghi của công việc: {workId}!");
+            }
+
+            _context.Works.Remove(work);
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<List<WorkViewModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var query = from w
+                        in _context.Works
+                        select new { w };
+
+            var data = await query.Select(x => new WorkViewModel()
+                {
+                    Id = x.w.Id,
+                    Name = x.w.Name,
+                    Description = x.w.Description,
+                    Status = (Data.Enums.Status)x.w.Status,
+                    Priority = (Data.Enums.Priority)x.w.Priority,
+                    Deadline = x.w.Deadline
+                }).ToListAsync();
+            return data;
         }
 
-        public async Task<PagedResult<WorkViewModel>> GetAllpaging(string keywork, int pageIndex, int pageSize)
+/*        public async Task<PagedResult<WorkViewModel>> GetAllpaging(string keywork, int pageIndex, int pageSize)
         {
             throw new NotImplementedException();
+        }*/
+
+        public async Task<PagedResult<WorkViewModel>> GetAllpaging(WorkPagingRequest request)
+        {
+            var query = from w 
+                        in _context.Works 
+                        select new { w };
+
+            if (!string.IsNullOrEmpty(request.KeyWork))
+            {
+                query = query.Where(x => x.w.Name.Contains(request.KeyWork) || x.w.Description.Contains(request.KeyWork));
+            }
+
+            int totalRow = await query.CountAsync();
+
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .Select(x => new WorkViewModel()
+                {
+                    Id = x.w.Id,
+                    Name = x.w.Name,
+                    Description = x.w.Description,
+                    Status = (Data.Enums.Status)x.w.Status,
+                    Priority = (Data.Enums.Priority)x.w.Priority,
+                    Deadline = x.w.Deadline
+                }).ToListAsync();
+
+            var pagedResult = new PagedResult<WorkViewModel>()
+            {
+                TotalRecord = totalRow,
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize,
+                Items = data
+            };
+            return pagedResult;
         }
 
-        public async Task<int> Update(WorkUpdateRequest request)
+        public async Task<int> Update(string id, WorkUpdateRequest request)
         {
-            throw new NotImplementedException();
+            var work = await _context.Works.FindAsync(id);
+            if (work == null)
+            {
+                throw new LucasTimetable_Exceptions($"Không tìm thấy bản ghi của công việc: {id}!");
+            }
+
+            work.Name = request.Name;
+            work.Description = request.Description;
+            work.Status = request.Status;
+            work.Priority = request.Priority;
+            work.Deadline = request.Deadline;
+
+            return await _context.SaveChangesAsync();
         }
     }
 }

@@ -11,12 +11,14 @@ namespace LucasTimetable.Application.Catalog.Works
     {
         Task<int> Create(WorkCreateRequest request);
 
-        Task<int> Update(WorkUpdateRequest request);
+        Task<int> Update(string id, WorkUpdateRequest request);
 
-        Task<int> Delete(int workId);
+        Task<int> Delete(string workId);
 
         Task<List<WorkViewModel>> GetAll();
 
-        Task<PagedResult<WorkViewModel>> GetAllpaging(string keywork, int pageIndex, int pageSize);
+        Task<PagedResult<WorkViewModel>> GetAllpaging(WorkPagingRequest request);
+
+
     }
 }

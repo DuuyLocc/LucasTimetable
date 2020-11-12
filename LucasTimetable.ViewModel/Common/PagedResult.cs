@@ -4,10 +4,8 @@ using System.Text;
 
 namespace LucasTimetable.ViewModel.Common
 {
-    public class PagedResult<T>
+    public class PagedResult<T> : PagingRequestBase
     {
         public List<T> Items { get; set; }
-
-        public int TotalRecord { get; set; }
     }
 }
