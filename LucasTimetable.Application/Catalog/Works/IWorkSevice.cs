@@ -11,9 +11,9 @@ namespace LucasTimetable.Application.Catalog.Works
     {
         Task<int> Create(WorkCreateRequest request);
 
-        Task<int> Update(string id, WorkUpdateRequest request);
+        Task<int> Update(int id, WorkUpdateRequest request);
 
-        Task<int> Delete(string workId);
+        Task<int> Delete(int workId);
 
         Task<WorkViewModel> GetById(int workId);
 

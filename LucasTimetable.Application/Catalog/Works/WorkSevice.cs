@@ -37,12 +37,12 @@ namespace LucasTimetable.Application.Catalog.Works
             return work.Id;
         }
 
-        public async Task<int> Delete(string workId)
+        public async Task<int> Delete(int workId)
         {
             var work = await _context.Works.FindAsync(workId);
             if (work == null)
             {
-                throw new LucasTimetable_Exceptions($"Không tìm thấy bản ghi của công việc: {workId}!");
+                throw new LucasTimetable_Exceptions($"Không tìm thấy công việc có Id là {workId} để xóa!");
             }
 
             _context.Works.Remove(work);
@@ -111,7 +111,7 @@ namespace LucasTimetable.Application.Catalog.Works
         {
             var work = await _context.Works.FindAsync(workId);
             if (work == null)
-                throw new LucasTimetable_Exceptions($"không tìm thấy Id: {workId}");
+                throw new LucasTimetable_Exceptions($"không tìm thấy công việc có Id là {workId} trong cơ sở dữ liệu");
             
             var works = new WorkViewModel()
             {
@@ -125,7 +125,7 @@ namespace LucasTimetable.Application.Catalog.Works
             return works;
         }
 
-        public async Task<int> Update(string id, WorkUpdateRequest request)
+        public async Task<int> Update(int id, WorkUpdateRequest request)
         {
             var work = await _context.Works.FindAsync(id);
             if (work == null)

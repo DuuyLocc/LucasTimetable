@@ -28,7 +28,7 @@ namespace LucasTimetable.BackendApi.Controllers
         }
 
         // http://localhost:port/work/paging-request
-        [HttpGet("paging-request")]
+        [HttpGet("paging")]
         public async Task<IActionResult> Get([FromQuery] WorkPagingRequest request)
         {
             var result = await _workSevice.GetAllpaging(request);
@@ -37,16 +37,16 @@ namespace LucasTimetable.BackendApi.Controllers
 
         // getbyid
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int workId)
+        public async Task<IActionResult> GetById(int id)
         {
-            var result = await _workSevice.GetById(workId);
+            var result = await _workSevice.GetById(id);
             if (result == null)
-                return BadRequest("not found");
+                return BadRequest("Not found id {id} in database");
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]WorkCreateRequest request)
+        public async Task<IActionResult> Create([FromForm]WorkCreateRequest request)
         {
             var workID = await _workSevice.Create(request);
             if (workID == 0) 
@@ -57,12 +57,24 @@ namespace LucasTimetable.BackendApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(string id, [FromBody] WorkUpdateRequest request)
+        public async Task<IActionResult> Update(int id, [FromBody] WorkUpdateRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var affectedResult = await _workSevice.Update(id, request);
+            if (affectedResult == 0)
+                return BadRequest();
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var affectedResult = await _workSevice.Delete(id);
             if (affectedResult == 0)
                 return BadRequest();
             return Ok();
