@@ -113,7 +113,8 @@ Install EF (Entity Framework) core
 -> 
 ## Lesion 18 - add Swagger to web api
 - Install Swagger: Swashbuckle.AspNetCore 
-
-
+## Lesion 19 - create restful api for work
+## Lesion 20 - Image
+## Lesion 21 - login
 
 
