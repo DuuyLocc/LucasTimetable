@@ -19,9 +19,9 @@ namespace LucasTimetable.BackendApi.Controllers
             _workSevice = workSevice;
         }
 
-        // http://localhost:port/work
+        // http://localhost:5001/api/work
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
             var result = await _workSevice.GetAll();
             return Ok(result);
@@ -29,7 +29,7 @@ namespace LucasTimetable.BackendApi.Controllers
 
         // http://localhost:port/work/paging-request
         [HttpGet("paging")]
-        public async Task<IActionResult> Get([FromQuery] WorkPagingRequest request)
+        public async Task<IActionResult> GetAllPaging([FromQuery] WorkPagingRequest request)
         {
             var result = await _workSevice.GetAllpaging(request);
             return Ok(result);
@@ -48,6 +48,9 @@ namespace LucasTimetable.BackendApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm]WorkCreateRequest request)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var workID = await _workSevice.Create(request);
             if (workID == 0) 
                 return BadRequest();
