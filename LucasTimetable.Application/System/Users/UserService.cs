@@ -27,34 +27,41 @@ namespace LucasTimetable.Application.System.Users
         public UserService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager
             , IConfiguration config)
         {
-            _userManager = userManager;
+            _userManager   = userManager;
             _signInManager = signInManager;
-            _roleManager = roleManager;
-            _config = config;
+            _roleManager   = roleManager;
+            _config        = config;
         }
 
-        public async Task<string> Authencate(LoginRequest request)
+        public Task<bool> Register(RegisterRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ApiResult<string>> Authencate(LoginRequest request)
         {
             // find username
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user == null)
             {
-                return null;
+                //return null;
+                return new ApiErrorResult<string>("account not exist");
             }
 
             // login by username & password
-            var result = _signInManager.PasswordSignInAsync(user, request.PassWord, request.RememberMe, true);
+            var result = await _signInManager.PasswordSignInAsync(user, request.PassWord, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return null;
+                //return null;
+                return new ApiErrorResult<string>("wrong password");
             }
 
             var roles = await _userManager.GetRolesAsync(user);
             //Only role == admin can be login
-            /*if (!roles.Contains("admin"))
+            if (!roles.Contains("admin"))
             {
-                return new ApiErrorResult<string>("Tài khoản không thể truy cập");
-            }*/
+                return new ApiErrorResult<string>("The account is not allowed to login");
+            }
 
             var claims = new[]
             {
@@ -74,13 +81,7 @@ namespace LucasTimetable.Application.System.Users
                 expires: DateTime.Now.AddHours(12),
                 signingCredentials: creds);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-
-        public Task<bool> Register(RegisterRequest request)
-        {
-            throw new NotImplementedException();
+            return new ApiSuccessResult<string>(new JwtSecurityTokenHandler().WriteToken(token));
         }
     }
 }
