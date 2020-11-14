@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="System\Users\" />
     <Folder Include="System\Roles\" />
   </ItemGroup>
 

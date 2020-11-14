@@ -1,9 +1,11 @@
 using LucasTimetable.Application.Catalog.Works;
 using LucasTimetable.Data.EF;
+using LucasTimetable.Data.Entities;
 using LucasTimetable.ViewModel.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +35,9 @@ namespace LucasTimetable.BackendApi
 
             // declare DI (moi lan request object se tao moi)
             services.AddTransient<IWorkSevice, WorkSevice>();
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             services.AddControllersWithViews();
 
