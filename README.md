@@ -117,5 +117,6 @@ Install EF (Entity Framework) core
 ## Lesion 20 - Image
 ## Lesion 21 - login
 - by web api and jwwt (not save section like MVC it just return jwwt)
+- done register, login admin
 
 
