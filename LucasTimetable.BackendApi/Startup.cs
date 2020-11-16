@@ -1,4 +1,5 @@
-using LucasTimetable.Application.Catalog.Works;
+﻿using LucasTimetable.Application.Catalog.Works;
+using LucasTimetable.Application.System.Users;
 using LucasTimetable.Data.EF;
 using LucasTimetable.Data.Entities;
 using LucasTimetable.ViewModel.Constants;
@@ -33,11 +34,19 @@ namespace LucasTimetable.BackendApi
             services.AddDbContext<Timetable_DBcontext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
+            // fix lỗi tham chiếu
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<Timetable_DBcontext>()
+                .AddDefaultTokenProviders();
+
+
             // declare DI (moi lan request object se tao moi)
             services.AddTransient<IWorkSevice, WorkSevice>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddTransient<IUserService, UserService>();
+
 
             services.AddControllersWithViews();
 

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LucasTimetable.Application.System.Users;
+using LucasTimetable.ViewModel.System.Users;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,45 @@ namespace LucasTimetable.BackendApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly IUserService _userService;
 
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpPost("authenticate")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Authenticate([FromForm] LoginRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var resultToken = await _userService.Authencate(request);
+
+            if (string.IsNullOrEmpty(resultToken.ResultObj))
+            {
+                return BadRequest(resultToken);
+            }
+
+            return Ok(resultToken);
+        }
+
+        [HttpPost("register")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register([FromForm] RegisterRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _userService.Register(request);
+
+            if (!result.IsSuccessed)
+            {
+                return BadRequest("Register is unsuccessful!");
+            }
+
+            return Ok();
+        }
     }
 }
