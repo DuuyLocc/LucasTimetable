@@ -15,8 +15,4 @@
     <ProjectReference Include="..\LucasTimetable.ViewModel\LucasTimetable.ViewModel.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="System\Roles\" />
-  </ItemGroup>
-
 </Project>
