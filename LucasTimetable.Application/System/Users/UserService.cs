@@ -113,5 +113,125 @@ namespace LucasTimetable.Application.System.Users
             string listErrors = string.Join(" ", errorMessage);
             return new ApiErrorResult<bool>(listErrors);
         }
+
+        public async Task<ApiResult<bool>> Update(Guid id, UserUpdateRequest request)
+        {
+            if (await _userManager.Users.AnyAsync(x => x.Email == request.Email && x.Id != id))
+            {
+                return new ApiErrorResult<bool>("Emai has exist");
+            }
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            user.NgaySinh = request.NgaySinh;
+            user.Email = request.Email;
+            user.Ho = request.Ho;
+            user.Ten = request.Ten;
+            user.HoTen = request.Ho + request.Ten;
+            user.PhoneNumber = request.SoDienThoai;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return new ApiSuccessResult<bool>();
+            }
+            //return error list
+            var errors = result.Errors;
+            var errorMessage = errors.Select(x => x.Description);
+            string listErrors = string.Join(" ", errorMessage);
+            return new ApiErrorResult<bool>(listErrors);
+            //return new ApiErrorResult<bool>(result.ToString());
+        }
+
+        public async Task<ApiResult<PagedResult<UserViewModel>>> GetUserPaging(GetUserPagingRequest request)
+        {
+            var query = _userManager.Users;
+            if (!string.IsNullOrEmpty(request.Keyword))
+            {
+                query = query.Where(x => x.UserName.Contains(request.Keyword) || x.HoTen.Contains(
+                    request.Keyword));
+            }
+
+            //3. Paging
+            int totalRow = await query.CountAsync();
+
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .Select(x => new UserViewModel()
+                {
+                    Email = x.Email,
+                    SoDienThoai = x.PhoneNumber,
+                    UserName = x.UserName,
+                    Ho = x.Ho,
+                    Ten = x.Ten,
+                    Id = x.Id
+                }).ToListAsync();
+
+            //4. Select and projection
+            var pagedResult = new PagedResult<UserViewModel>()
+            {
+                TotalRecord = totalRow,
+                PageIndex = request.PageIndex,
+                PageSize = request.PageSize,
+                Items = data
+            };
+            return new ApiSuccessResult<PagedResult<UserViewModel>>(pagedResult);
+        }
+
+        public async Task<ApiResult<UserViewModel>> GetById(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<UserViewModel>("User is not exist");
+            }
+            var roles = await _userManager.GetRolesAsync(user);
+
+            string HoTen = user.Ho + user.Ten;
+            var userViewModel = new UserViewModel()
+            {
+                Id = user.Id,
+                Ho = user.Ho,
+                Ten = user.Ten,
+                HoTen = HoTen,
+                Email = user.Email,
+                SoDienThoai = user.PhoneNumber,
+                NgaySinh = user.NgaySinh,
+                UserName = user.UserName,
+                Roles = roles
+            };
+            return new ApiSuccessResult<UserViewModel>(userViewModel);
+        }
+
+        public async Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("account does not exist");
+            }
+
+            var removedRoles = request.Roles.Where(x => x.Selected == false).Select(x => x.Name).ToList();
+
+            foreach (var roleName in removedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == true)
+                {
+                    await _userManager.RemoveFromRoleAsync(user, roleName);
+                }
+            }
+            await _userManager.RemoveFromRolesAsync(user, removedRoles);
+
+            var addedRoles = request.Roles.Where(x => x.Selected).Select(x => x.Name).ToList();
+
+            foreach (var roleName in addedRoles)
+            {
+                if (await _userManager.IsInRoleAsync(user, roleName) == false)
+                {
+                    await _userManager.AddToRoleAsync(user, roleName);
+                }
+            }
+
+            return new ApiSuccessResult<bool>();
+        }
     }
 }
