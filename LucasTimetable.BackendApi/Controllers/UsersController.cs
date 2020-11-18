@@ -35,7 +35,7 @@ namespace LucasTimetable.BackendApi.Controllers
                 return BadRequest(resultToken);
             }
 
-            return Ok(resultToken);
+            return Ok(new { token = resultToken });
         }
 
         [HttpPost("register")]

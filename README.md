@@ -118,6 +118,7 @@ Install EF (Entity Framework) core
 ## Lesion 21 - login
 - by web api and jwwt (not save section like MVC it just return jwwt)
 - done register, login admin
-## Lesion 22 - 
+## Lesion 22 - Add Authorization to Swagger
 - FluentValidation
+- AddSwaggerGen
 

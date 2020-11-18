@@ -54,6 +54,8 @@ namespace LucasTimetable.BackendApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger Lucastimetable", Version = "v1" });
+
+
             });
 
             
