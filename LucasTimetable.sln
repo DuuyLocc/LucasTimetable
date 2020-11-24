@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.ViewModel", "LucasTimetable.ViewModel\LucasTimetable.ViewModel.csproj", "{57F0E06B-E04A-4257-B8B9-8C446BDC6066}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasTimetable.BackendApi", "LucasTimetable.BackendApi\LucasTimetable.BackendApi.csproj", "{118599A1-E0E2-43AC-BD4D-139466A1C87D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.BackendApi", "LucasTimetable.BackendApi\LucasTimetable.BackendApi.csproj", "{118599A1-E0E2-43AC-BD4D-139466A1C87D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasTimetable.AdminApp", "LucasTimetable.AdminApp\LucasTimetable.AdminApp.csproj", "{EDBE5D91-E23D-4409-A707-3639A5B17B75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
