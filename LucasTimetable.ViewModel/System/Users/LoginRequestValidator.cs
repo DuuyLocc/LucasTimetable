@@ -7,11 +7,12 @@ namespace LucasTimetable.ViewModel.System.Users
 {
     public class LoginRequestValidator : AbstractValidator<LoginRequest>
     {
+        // declare constructor
         public LoginRequestValidator()
         {
-            RuleFor(x => x.UserName).NotEmpty().WithMessage("Miss username");
+            RuleFor(x => x.UserName).NotEmpty().WithMessage("username is required");
 
-            RuleFor(x => x.PassWord).NotEmpty().WithMessage("Miss password");
+            RuleFor(x => x.PassWord).NotEmpty().WithMessage("password  is required");
         }
     }
 }

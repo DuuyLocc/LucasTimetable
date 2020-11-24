@@ -1,8 +1,11 @@
-﻿using LucasTimetable.Application.Catalog.Works;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using LucasTimetable.Application.Catalog.Works;
 using LucasTimetable.Application.System.Users;
 using LucasTimetable.Data.EF;
 using LucasTimetable.Data.Entities;
 using LucasTimetable.ViewModel.Constants;
+using LucasTimetable.ViewModel.System.Users;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,7 +39,7 @@ namespace LucasTimetable.BackendApi
             services.AddDbContext<Timetable_DBcontext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
-            // fix lỗi tham chiếu
+            // fix lỗi tham chiếu | có thể thêm passwword maxlenght
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<Timetable_DBcontext>()
                 .AddDefaultTokenProviders();
@@ -49,8 +52,12 @@ namespace LucasTimetable.BackendApi
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
 
+            //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
+            //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
-            services.AddControllers();
+            // Automatic Registration
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
              /*   .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>())
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 */

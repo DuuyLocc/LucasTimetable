@@ -122,4 +122,6 @@ Install EF (Entity Framework) core
 - AddSwaggerGen: AddSecurityDefinition, AddSecurityRequirement
 - JWT config
 - services.AddControllers();
-
+## lesion 23 - Fluent validator viewmodel of WebApi 
+- validation 2 cách: [Required(ErrorMessage = "UserName is required")] fix cứng khó thay đổi điều kiện
+- https://docs.fluentvalidation.net/en/latest/aspnet.html
