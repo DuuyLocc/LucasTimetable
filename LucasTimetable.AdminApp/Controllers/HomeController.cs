@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LucasTimetable.AdminApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -20,6 +20,7 @@ namespace LucasTimetable.AdminApp.Controllers
 
         public IActionResult Index()
         {
+            var user = User.Identity.Name;
             return View();
         }
 
