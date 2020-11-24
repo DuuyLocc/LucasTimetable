@@ -1,5 +1,6 @@
 ﻿using LucasTimetable.Application.Catalog.Works;
 using LucasTimetable.ViewModel.Catalog.Works;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,8 @@ namespace LucasTimetable.BackendApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class WorkController : ControllerBase
     {
         private IWorkSevice _workSevice;
@@ -27,11 +30,13 @@ namespace LucasTimetable.BackendApi.Controllers
             return Ok(result);
         }
 
-        // http://localhost:port/work/paging-request
+        // http://localhost:port/work/paging
         [HttpGet("paging")]
         public async Task<IActionResult> GetAllPaging([FromQuery] WorkPagingRequest request)
         {
             var result = await _workSevice.GetAllpaging(request);
+            if (result == null)
+                return BadRequest("Not found anything");
             return Ok(result);
         }
 

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LucasTimetable.Application\LucasTimetable.Application.csproj" />
     <ProjectReference Include="..\LucasTimetable.Data\LucasTimetable.Data.csproj" />
     <ProjectReference Include="..\LucasTimetable.ViewModel\LucasTimetable.ViewModel.csproj" />
