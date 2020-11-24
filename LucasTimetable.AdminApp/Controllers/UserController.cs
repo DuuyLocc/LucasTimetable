@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LucasTimetable.AdminApp.Services;
+using LucasTimetable.ViewModel.Common;
+using LucasTimetable.ViewModel.System.Users;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +29,9 @@ namespace LucasTimetable.AdminApp.Controllers
         {
             var request = new GetUserPagingRequest()
             {
-                Keyword = keyword,
+                Keyword   = keyword,
                 PageIndex = pageIndex,
-                PageSize = pageSize
+                PageSize  = pageSize
             };
             var data = await _userApiClient.GetUsersPaging(request);
 

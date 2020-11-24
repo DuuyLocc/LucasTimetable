@@ -1,5 +1,8 @@
+using LucasTimetable.AdminApp.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +26,36 @@ namespace LucasTimetable.AdminApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                            .AddCookie(options =>
+                            {
+                                options.LoginPath = "/Login";
+                                options.AccessDeniedPath = "/User/Forbidden/";
+                            });
+
             services.AddControllersWithViews();
+                //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
+
+
+            services.AddSession(option => {
+                option.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IUserApiClient, UserApiClient>();
+            services.AddTransient<IRoleApiClient, RoleApiClient>();
+
+            //IMvcBuilder builder = services.AddRazorPages();
+            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            //#if DEBUG
+            //if (environment == Environments.Development)
+            //{
+            //    builder.AddRazorRuntimeCompilation();
+            //}
+            //#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,9 +74,13 @@ namespace LucasTimetable.AdminApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseAuthentication();
+
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
