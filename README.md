@@ -129,3 +129,5 @@ Install EF (Entity Framework) core
 - https://startbootstrap.com/previews/sb-admin-2
 ## Lesion 25 - create Login page and integrate backend API
 - 
+## Lesion 26 - Cookie Authentication without ASP.NET Identity
+- 

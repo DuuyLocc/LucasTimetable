@@ -13,7 +13,6 @@
     <ProjectReference Include="..\LucasTimetable.Application\LucasTimetable.Application.csproj" />
     <ProjectReference Include="..\LucasTimetable.Data\LucasTimetable.Data.csproj" />
     <ProjectReference Include="..\LucasTimetable.ViewModel\LucasTimetable.ViewModel.csproj" />
-    <ProjectReference Include="..\LucasTimetable.WebApp\LucasTimetable.WebApp.csproj" />
   </ItemGroup>
 
 </Project>

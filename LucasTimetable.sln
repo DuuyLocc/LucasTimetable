@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.WebApp", "LucasTimetable.WebApp\LucasTimetable.WebApp.csproj", "{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01494D14-D587-432E-98C6-117AE2067451}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -18,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.ViewModel", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.BackendApi", "LucasTimetable.BackendApi\LucasTimetable.BackendApi.csproj", "{118599A1-E0E2-43AC-BD4D-139466A1C87D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasTimetable.AdminApp", "LucasTimetable.AdminApp\LucasTimetable.AdminApp.csproj", "{EDBE5D91-E23D-4409-A707-3639A5B17B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.AdminApp", "LucasTimetable.AdminApp\LucasTimetable.AdminApp.csproj", "{EDBE5D91-E23D-4409-A707-3639A5B17B75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{307F430A-C05A-4A00-BB05-D0F24102E063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{307F430A-C05A-4A00-BB05-D0F24102E063}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307F430A-C05A-4A00-BB05-D0F24102E063}.Release|Any CPU.ActiveCfg = Release|Any CPU
