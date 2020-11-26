@@ -128,6 +128,8 @@ Install EF (Entity Framework) core
 ## Lesion 24 - create admin app & add template
 - https://startbootstrap.com/previews/sb-admin-2
 ## Lesion 25 - create Login page and integrate backend API
-- 
+- Login with web api (not use identity on app mvc core)
+- https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-5.0
 ## Lesion 26 - Cookie Authentication without ASP.NET Identity
-- 
+- cookie authenticcation without asp.net core identity
+- https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-5.0

@@ -17,7 +17,7 @@ namespace LucasTimetable.AdminApp.Controllers
             var sessions = context.HttpContext.Session.GetString("Token");
             if (sessions == null)
             {
-                context.Result = new RedirectToActionResult("Index", "Login", null);
+                context.Result = new RedirectToActionResult("Login", "User", null);
             }
             base.OnActionExecuting(context);
         }

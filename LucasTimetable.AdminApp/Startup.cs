@@ -33,7 +33,7 @@ namespace LucasTimetable.AdminApp
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                             .AddCookie(options =>
                             {
-                                options.LoginPath = "/Login";
+                                options.LoginPath = "/User/Login";
                                 options.AccessDeniedPath = "/User/Forbidden/";
                             });
 

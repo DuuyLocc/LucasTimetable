@@ -21,9 +21,9 @@ namespace LucasTimetable.AdminApp.Services
 
         public UserApiClient(IHttpClientFactory httpClientFactory, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
-            _configuration = configuration;
+            _configuration       = configuration;
             _httpContextAccessor = httpContextAccessor;
-            _httpClientFactory = httpClientFactory;
+            _httpClientFactory   = httpClientFactory;
         }
 
         public async Task<ApiResult<string>> Authenticate(LoginRequest request)
