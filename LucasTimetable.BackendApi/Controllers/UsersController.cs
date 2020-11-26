@@ -12,6 +12,7 @@ namespace LucasTimetable.BackendApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -51,7 +52,7 @@ namespace LucasTimetable.BackendApi.Controllers
                 return BadRequest("Register is unsuccessful!!!");
             }
 
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
@@ -86,8 +87,6 @@ namespace LucasTimetable.BackendApi.Controllers
         [HttpGet("paging")]
         public async Task<IActionResult> GetAllPaging([FromQuery] GetUserPagingRequest request)
         {
-
-
             var products = await _userService.GetUserPaging(request);
             return Ok(products);
         }

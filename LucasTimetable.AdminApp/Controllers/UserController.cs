@@ -17,92 +17,47 @@ using System.Threading.Tasks;
 
 namespace LucasTimetable.AdminApp.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
-        private readonly IUserApiClient _userApiClient;
-        private readonly IConfiguration _configuration;
+         private readonly IUserApiClient _userApiClient;
+         private readonly IConfiguration _configuration;
 
-        public UserController(IUserApiClient userApiClient, IConfiguration configuration)
-        {
-            _userApiClient = userApiClient;
-            _configuration = configuration;
-        }
+         public UserController(IUserApiClient userApiClient, IConfiguration configuration)
+         {
+             _userApiClient = userApiClient;
+             _configuration = configuration;
+         }
 
-        public async Task<IActionResult> Index(string keyword, int pageIndex =1, int pageZise = 10)
-        {
-            var sessions = HttpContext.Session.GetString("Token");
-            var request  = new GetUserPagingRequest()
-            {
-                //BearerToken = sessions,
-                Keyword     = keyword,
-                PageIndex   = pageIndex,
-                PageSize    = pageZise
-            };
-            var data = await _userApiClient.GetUsersPaging(request);
+         public async Task<IActionResult> Index(string keyword, int pageIndex =1, int pageZise = 10)
+         {
+             //var sessions = HttpContext.Session.GetString("Token");
+             var request  = new GetUserPagingRequest()
+             {
+                 //BearerToken = sessions,
+                 Keyword     = keyword,
+                 PageIndex   = pageIndex,
+                 PageSize    = pageZise
+             };
+             var data = await _userApiClient.GetUsersPaging(request);
 
-            return View(data);
-        }
+             ViewBag.Keyword = keyword;
 
-        [HttpGet]
-        public async Task<IActionResult> Login()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return View();
-        }
+             if (TempData["result"] != null)
+             {
+                 ViewBag.SuccessMessage = TempData["result"];
+             }
 
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "User");
-        }
+             return View(data.ResultObj);
+         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginRequest request)
-        {
-            if (!ModelState.IsValid)
-                return View(ModelState);
+         [HttpPost]
+         public async Task<IActionResult> Logout()
+         {
+             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+             HttpContext.Session.Remove("Token");
+             return RedirectToAction("Index", "Login");
+         }
 
-            var token = await _userApiClient.Authenticate(request);
-            if (token.ResultObj == null)
-            {
-                ModelState.AddModelError("", token.Message);
-                return View();
-            }
 
-            var userPrincipal = this.ValidateToken(token.ResultObj);
-
-            var authProperties = new AuthenticationProperties
-            {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(12),
-                IsPersistent = false
-            };
-
-            HttpContext.Session.SetString("Token", token.ResultObj);
-            await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        userPrincipal,
-                        authProperties);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        private ClaimsPrincipal ValidateToken(string jwtToken)
-        {
-            IdentityModelEventSource.ShowPII = true;
-
-            SecurityToken validatedToken;
-            TokenValidationParameters validationParameters = new TokenValidationParameters();
-
-            validationParameters.ValidateLifetime = true;
-
-            validationParameters.ValidAudience = _configuration["Tokens:Issuer"];
-            validationParameters.ValidIssuer = _configuration["Tokens:Issuer"];
-            validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
-
-            ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(jwtToken, validationParameters, out validatedToken);
-
-            return principal;
-        }
     }
 }

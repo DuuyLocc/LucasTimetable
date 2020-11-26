@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LucasTimetable.AdminApp.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;

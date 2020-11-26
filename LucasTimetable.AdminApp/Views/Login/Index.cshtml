@@ -1,8 +1,8 @@
 ﻿@model LucasTimetable.ViewModel.System.Users.LoginRequest
-
 @{
     Layout = null;
 }
+
 
 <!DOCTYPE html>
 
@@ -24,20 +24,16 @@
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body>
-
     <div class="container">
-
-        <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
-                                <img src="/img/lucas-timetable-logo.jpg" class="w-100" />
+                                <img src="~/img/lucas-timetable-logo.jpg" class="w-100" />
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
@@ -45,10 +41,10 @@
                                         <h1 class="h4 text-gray-900 mb-4">Đăng nhập</h1>
                                     </div>
                                     <div asp-validation-summary="All" class="text-danger"></div>
-                                    <form asp-action="Index" asp-controller="Login" method="POST">
+                                    <form asp-action="Index" asp-controller="Login" method="post">
                                         <div class="form-group">
-                                            <label class="small mb-1" >Tài khoản</label>
-                                            <input asp-for="UserName" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp"  required>
+                                            <label class="small mb-1">Tài khoản</label>
+                                            <input asp-for="UserName" type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1">Mật khẩu</label>
@@ -60,11 +56,11 @@
                                                 <label class="form-check-label">Nhớ mật khẩu</label>
                                             </div>
                                         </div>
-                                        
+
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Đăng nhập
                                         </button>
-                                        <a href="#" class="small">Quên mật khẩu</a>
+                                        <a href="/User/ForgotPassword" class="small">Quên mật khẩu</a>
                                     </form>
                                 </div>
                             </div>
@@ -78,8 +74,7 @@
 
     </div>
 
-
-    @*    <div style="text-align:center; margin-top:20px">
+    @*<div style="text-align:center; margin-top:20px">
             <a asp-action="Index">Back to List</a>
         </div>*@
 
