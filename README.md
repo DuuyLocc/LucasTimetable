@@ -133,3 +133,5 @@ Install EF (Entity Framework) core
 ## Lesion 26 - Cookie Authentication without ASP.NET Identity
 - cookie authenticcation without asp.net core identity
 - https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-5.0
+## Lesion 27 - get list user
+- 

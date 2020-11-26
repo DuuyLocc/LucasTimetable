@@ -62,15 +62,16 @@ namespace LucasTimetable.AdminApp.Services
 
         public async Task<ApiResult<PagedResult<UserViewModel>>> GetUsersPaging(GetUserPagingRequest request)
         {
-            var client = _httpClientFactory.CreateClient();
+            var client   = _httpClientFactory.CreateClient();
             var sessions = _httpContextAccessor.HttpContext.Session.GetString("Token");
-
+             
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessions);
+
             var response = await client.GetAsync($"/api/users/paging?pageIndex=" +
                 $"{request.PageIndex}&pageSize={request.PageSize}&keyword={request.Keyword}");
 
-            var body = await response.Content.ReadAsStringAsync();
+            var body  = await response.Content.ReadAsStringAsync();
             var users = JsonConvert.DeserializeObject<ApiSuccessResult<PagedResult<UserViewModel>>>(body);
             return users;
         }

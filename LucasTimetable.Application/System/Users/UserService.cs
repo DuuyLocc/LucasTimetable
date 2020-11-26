@@ -146,8 +146,7 @@ namespace LucasTimetable.Application.System.Users
             var query = _userManager.Users;
             if (!string.IsNullOrEmpty(request.Keyword))
             {
-                query = query.Where(x => x.UserName.Contains(request.Keyword) || x.HoTen.Contains(
-                    request.Keyword));
+                query = query.Where(x => x.UserName.Contains(request.Keyword) || x.HoTen.Contains(request.Keyword));
             }
 
             //3. Paging
@@ -157,21 +156,21 @@ namespace LucasTimetable.Application.System.Users
                 .Take(request.PageSize)
                 .Select(x => new UserViewModel()
                 {
-                    Email = x.Email,
+                    Email       = x.Email,
                     SoDienThoai = x.PhoneNumber,
-                    UserName = x.UserName,
-                    Ho = x.Ho,
+                    UserName    = x.UserName,
+                    Ho  = x.Ho,
                     Ten = x.Ten,
-                    Id = x.Id
+                    Id  = x.Id
                 }).ToListAsync();
 
             //4. Select and projection
             var pagedResult = new PagedResult<UserViewModel>()
             {
                 TotalRecord = totalRow,
-                PageIndex = request.PageIndex,
-                PageSize = request.PageSize,
-                Items = data
+                PageIndex   = request.PageIndex,
+                PageSize    = request.PageSize,
+                Items       = data
             };
             return new ApiSuccessResult<PagedResult<UserViewModel>>(pagedResult);
         }

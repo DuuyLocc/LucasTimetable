@@ -34,11 +34,10 @@ namespace LucasTimetable.BackendApi.Controllers
             {
                 return BadRequest("UserName or PassWord is incorrect!!!");
             }
-
             return Ok(resultToken);
         }
 
-        [HttpPost("register")]
+        [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
@@ -87,6 +86,8 @@ namespace LucasTimetable.BackendApi.Controllers
         [HttpGet("paging")]
         public async Task<IActionResult> GetAllPaging([FromQuery] GetUserPagingRequest request)
         {
+
+
             var products = await _userService.GetUserPaging(request);
             return Ok(products);
         }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace LucasTimetable.ViewModel.System.Users
-{
+{  
     public class UserUpdateRequest
     {
         public Guid Id { get; set; }

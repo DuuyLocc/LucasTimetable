@@ -4,9 +4,8 @@ using System.Text;
 
 namespace LucasTimetable.ViewModel.Common
 {
-    public class PagingRequestBase 
+    public class Requestbase
     {
-        public int PageIndex { get; set; }
-        public int PageSize { get; set; }
+        public string BearerToken { get; set; }
     }
 }

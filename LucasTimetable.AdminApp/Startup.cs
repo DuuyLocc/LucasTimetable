@@ -36,7 +36,7 @@ namespace LucasTimetable.AdminApp
                                 options.LoginPath = "/User/Login";
                                 options.AccessDeniedPath = "/User/Forbidden/";
                             });
-
+            
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
