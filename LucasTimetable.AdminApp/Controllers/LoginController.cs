@@ -2,6 +2,7 @@
 using LucasTimetable.ViewModel.System.Users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +24,7 @@ namespace LucasTimetable.AdminApp.Controllers
         private readonly IUserApiClient _userApiClient;
         private readonly IConfiguration _configuration;
 
-        public UserController(IUserApiClient userApiClient, IConfiguration configuration)
+        public LoginController(IUserApiClient userApiClient, IConfiguration configuration)
         {
             _userApiClient = userApiClient;
             _configuration = configuration;
@@ -41,27 +42,23 @@ namespace LucasTimetable.AdminApp.Controllers
         {
             if (!ModelState.IsValid)
                 return View(ModelState);
-
             var token = await _userApiClient.Authenticate(request);
             if (token.ResultObj == null)
             {
                 ModelState.AddModelError("", token.Message);
                 return View();
             }
-
             var userPrincipal = this.ValidateToken(token.ResultObj);
             var authProperties = new AuthenticationProperties
             {
                 ExpiresUtc = DateTimeOffset.UtcNow.AddHours(12),
                 IsPersistent = false
             };
-
             HttpContext.Session.SetString("Token", token.ResultObj);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
                         authProperties);
-
             return RedirectToAction("Index", "Home");
         }
 
@@ -81,6 +78,14 @@ namespace LucasTimetable.AdminApp.Controllers
             ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(jwtToken, validationParameters, out validatedToken);
 
             return principal;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("Token");
+            return RedirectToAction("Index", "Login");
         }
     }
 }

@@ -40,15 +40,6 @@ namespace LucasTimetable.AdminApp
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
-            IMvcBuilder builder = services.AddRazorPages();
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            #if DEBUG
-                        if (environment == Environments.Development)
-                        {
-                            builder.AddRazorRuntimeCompilation();
-                        }
-            #endif
-
             services.AddSession(option => {
                 option.IdleTimeout = TimeSpan.FromMinutes(30);
             });
@@ -57,6 +48,15 @@ namespace LucasTimetable.AdminApp
             services.AddTransient<IUserApiClient, UserApiClient>();
             services.AddTransient<IRoleApiClient, RoleApiClient>();
 
+            IMvcBuilder builder = services.AddRazorPages();
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            #if DEBUG
+                        if (environment == Environments.Development)
+                        {
+                            builder.AddRazorRuntimeCompilation();
+                        }
+            #endif
 
         }
 

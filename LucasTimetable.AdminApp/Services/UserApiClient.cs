@@ -29,21 +29,16 @@ namespace LucasTimetable.AdminApp.Services
         public async Task<ApiResult<string>> Authenticate(LoginRequest request)
         {
             var json = JsonConvert.SerializeObject(request);
-
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-
             var client = _httpClientFactory.CreateClient();
-
             client.BaseAddress = new Uri(_configuration["BaseAddress"]);
-
             var response = await client.PostAsync("/api/users/authenticate", httpContent);
-
+            var token = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<ApiSuccessResult<string>>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<ApiSuccessResult<string>>(token);
             }
-
-            return JsonConvert.DeserializeObject<ApiErrorResult<string>>(await response.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<ApiErrorResult<string>>(token);
         }
 
         public async Task<ApiResult<UserViewModel>> GetById(Guid id)

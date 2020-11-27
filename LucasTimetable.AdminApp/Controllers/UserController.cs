@@ -2,6 +2,7 @@
 using LucasTimetable.ViewModel.System.Users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace LucasTimetable.AdminApp.Controllers
 {
+    //[Authorize]
     public class UserController : BaseController
     {
          private readonly IUserApiClient _userApiClient;
@@ -49,15 +51,6 @@ namespace LucasTimetable.AdminApp.Controllers
 
              return View(data.ResultObj);
          }
-
-         [HttpPost]
-         public async Task<IActionResult> Logout()
-         {
-             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-             HttpContext.Session.Remove("Token");
-             return RedirectToAction("Index", "Login");
-         }
-
 
     }
 }
