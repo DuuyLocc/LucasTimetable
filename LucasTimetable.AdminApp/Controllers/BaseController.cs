@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LucasTimetable.AdminApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class BaseController : Controller
     {
         public override void OnActionExecuting(ActionExecutingContext context)

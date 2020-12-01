@@ -80,7 +80,6 @@ namespace LucasTimetable.AdminApp.Services
             var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync($"/api/users", httpContent);
-
             var result = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
