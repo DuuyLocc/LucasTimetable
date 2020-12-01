@@ -7,7 +7,7 @@ namespace LucasTimetable.ViewModel.Common
 {
     public class ApiErrorResult<T> : ApiResult<T>
     {
-        private IEnumerable<IdentityError> errors;
+        private IEnumerable<IdentityError> errors; 
 
         public T ValidationErrors { get; set; }
 

@@ -93,13 +93,14 @@ namespace LucasTimetable.Application.System.Users
             user = new AppUser()
             {
                 NgaySinh = request.NgaySinh,
-                Email = request.Email,
-                Ho = request.Ho,
-                Ten = request.Ten,
-                HoTen = hoTen,
+                Email    = request.Email,
+                Ho       = request.Ho,
+                Ten      = request.Ten,
+                HoTen    = hoTen,
                 UserName = request.UserName,
                 PhoneNumber = request.SoDienThoai
             };
+
 
             var result = await _userManager.CreateAsync(user, request.Password);
             if (result.Succeeded)
