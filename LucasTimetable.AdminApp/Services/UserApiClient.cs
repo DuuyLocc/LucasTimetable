@@ -19,7 +19,8 @@ namespace LucasTimetable.AdminApp.Services
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserApiClient(IHttpClientFactory httpClientFactory, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public UserApiClient(IHttpClientFactory httpClientFactory, IConfiguration configuration, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _configuration       = configuration;
             _httpContextAccessor = httpContextAccessor;

@@ -9,7 +9,7 @@ namespace LucasTimetable.ViewModel.Common
         public ApiSuccessResult(T resultObj)
         {
             IsSuccessed = true;
-            ResultObj = resultObj;
+            ResultObj   = resultObj;
         }
 
         public ApiSuccessResult()

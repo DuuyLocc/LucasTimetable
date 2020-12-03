@@ -105,7 +105,7 @@ namespace LucasTimetable.BackendApi
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme    = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {

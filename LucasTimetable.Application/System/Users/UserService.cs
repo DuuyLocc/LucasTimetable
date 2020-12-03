@@ -119,14 +119,14 @@ namespace LucasTimetable.Application.System.Users
         {
             if (await _userManager.Users.AnyAsync(x => x.Email == request.Email && x.Id != id))
             {
-                return new ApiErrorResult<bool>("Emai has exist");
+                return new ApiErrorResult<bool>("Emai đã tồn tại");
             }
             var user = await _userManager.FindByIdAsync(id.ToString());
             user.NgaySinh = request.NgaySinh;
-            user.Email = request.Email;
-            user.Ho = request.Ho;
-            user.Ten = request.Ten;
-            user.HoTen = request.Ho + request.Ten;
+            user.Email    = request.Email;
+            user.Ho       = request.Ho;
+            user.Ten      = request.Ten;
+            user.HoTen    = request.Ho + request.Ten;
             user.PhoneNumber = request.SoDienThoai;
 
             var result = await _userManager.UpdateAsync(user);
@@ -136,10 +136,10 @@ namespace LucasTimetable.Application.System.Users
             }
             //return error list
             var errors = result.Errors;
-            var errorMessage = errors.Select(x => x.Description);
+            var errorMessage  = errors.Select(x => x.Description);
             string listErrors = string.Join(" ", errorMessage);
             return new ApiErrorResult<bool>(listErrors);
-            //return new ApiErrorResult<bool>(result.ToString());
+            //return new ApiErrorResult<bool>("Cập nhật không thành công");
         }
 
         public async Task<ApiResult<PagedResult<UserViewModel>>> GetUserPaging(GetUserPagingRequest request)
@@ -181,21 +181,21 @@ namespace LucasTimetable.Application.System.Users
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null)
             {
-                return new ApiErrorResult<UserViewModel>("User is not exist");
+                return new ApiErrorResult<UserViewModel>("User không tồn tại!");
             }
             var roles = await _userManager.GetRolesAsync(user);
 
             string HoTen = user.Ho + user.Ten;
             var userViewModel = new UserViewModel()
             {
-                Id = user.Id,
-                Ho = user.Ho,
-                Ten = user.Ten,
+                Id    = user.Id,
+                Ho    = user.Ho,
+                Ten   = user.Ten,
                 HoTen = HoTen,
                 Email = user.Email,
                 SoDienThoai = user.PhoneNumber,
-                NgaySinh = user.NgaySinh,
-                UserName = user.UserName,
+                NgaySinh    = user.NgaySinh,
+                UserName    = user.UserName,
                 Roles = roles
             };
             return new ApiSuccessResult<UserViewModel>(userViewModel);
@@ -232,6 +232,20 @@ namespace LucasTimetable.Application.System.Users
             }
 
             return new ApiSuccessResult<bool>();
+        }
+
+        public async Task<ApiResult<bool>> Delete(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("User không tồn tại");
+            }
+            var reult = await _userManager.DeleteAsync(user);
+            if (reult.Succeeded)
+                return new ApiSuccessResult<bool>();
+
+            return new ApiErrorResult<bool>("Xóa không thành công");
         }
     }
 }

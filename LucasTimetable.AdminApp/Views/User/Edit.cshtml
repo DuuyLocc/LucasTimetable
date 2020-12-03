@@ -4,40 +4,54 @@
     ViewData["Title"] = "Cập nhật user";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Edit">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Ho" class="control-label"></label>
-                        <input asp-for="Ho" class="form-control" />
-                        <span asp-validation-for="Ho" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Ten" class="control-label"></label>
-                        <input asp-for="Ten" class="form-control" />
-                        <span asp-validation-for="Ten" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="NgaySinh" class="control-label"></label>
-                        <input asp-for="NgaySinh" class="form-control" />
-                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="SoDienThoai" class="control-label"></label>
-                        <input asp-for="SoDienThoai" class="form-control" />
-                        <span asp-validation-for="SoDienThoai" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" value="Lưu lại" class="btn btn-primary">Đồng ý</button>
-                    </div>
-                </form>
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Cập nhật user</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <a class="btn btn-success" asp-action="Index" asp-controller="User">Về Danh sách user</a>
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Ho" class="control-label"></label>
+                            <input asp-for="Ho" class="form-control" />
+                            <span asp-validation-for="Ho" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Ten" class="control-label"></label>
+                            <input asp-for="Ten" class="form-control" />
+                            <span asp-validation-for="Ten" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NgaySinh" class="control-label"></label>
+                            <input asp-for="NgaySinh" class="form-control" />
+                            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SoDienThoai" class="control-label"></label>
+                            <input asp-for="SoDienThoai" class="form-control" />
+                            <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" value="Lưu lại" class="btn btn-primary">Đồng ý</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
+</div>

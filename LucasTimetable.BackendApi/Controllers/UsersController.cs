@@ -33,7 +33,7 @@ namespace LucasTimetable.BackendApi.Controllers
 
             if (string.IsNullOrEmpty(resultToken.ResultObj))
             {
-                return BadRequest("UserName or PassWord is incorrect!!!");
+                return BadRequest(resultToken);
             }
             return Ok(resultToken);
         }
@@ -49,12 +49,13 @@ namespace LucasTimetable.BackendApi.Controllers
 
             if (!result.IsSuccessed)
             {
-                return BadRequest("Register is unsuccessful!!!");
+                return BadRequest(result);
             }
 
             return Ok(result);
         }
 
+        // http://localhost/api/users/id
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UserUpdateRequest request)
         {

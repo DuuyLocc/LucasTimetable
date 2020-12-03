@@ -43,8 +43,8 @@ namespace LucasTimetable.AdminApp
             services.AddSession(option => {
                 option.IdleTimeout = TimeSpan.FromMinutes(30);
             });
-
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddTransient<IUserApiClient, UserApiClient>();
             services.AddTransient<IRoleApiClient, RoleApiClient>();
 
