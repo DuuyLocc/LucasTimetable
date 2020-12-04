@@ -29,13 +29,16 @@
                 </div>
                 <div class=" float-lg-right">
                     <form asp-action="Index" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
-                        <div class="input-group">
+                        <div class="input-group" asp-action="Index" method="get">
                             <input value="@ViewBag.keyword" type="text" name="keyword" class="form-control bg-white" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-outline-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
+                            <button class="btn" type="button" onclick="window.location.href='/User/Index/'">
+                                Reset
+                            </button>
                         </div>
                     </form>
                 </div>

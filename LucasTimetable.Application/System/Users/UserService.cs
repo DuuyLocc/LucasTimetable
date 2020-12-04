@@ -37,21 +37,21 @@ namespace LucasTimetable.Application.System.Users
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user == null)
             {
-                return new ApiErrorResult<string>("account not exist");
+                return new ApiErrorResult<string>("Tài khoản không tồn tại");
             }
 
             // login by username & password
             var result = await _signInManager.PasswordSignInAsync(user, request.PassWord, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return new ApiErrorResult<string>("wrong password");
+                return new ApiErrorResult<string>("Password sai rồi!");
             }
 
             var roles = await _userManager.GetRolesAsync(user);
             //Only role == admin can be login
             if (!roles.Contains("admin"))
             {
-                return new ApiErrorResult<string>("The account is not allowed to login");
+                return new ApiErrorResult<string>("Vui lòng dùng tài khoản admin để đăng nhập!");
             }
 
             var claims = new[]
@@ -81,12 +81,12 @@ namespace LucasTimetable.Application.System.Users
 
             if (user != null)
             {
-                return new ApiErrorResult<bool>("account has exist");
+                return new ApiErrorResult<bool>("Tài khoản đã tồn tại hãy thử đăng ký lại!");
             }
 
             if (await _userManager.FindByEmailAsync(request.Email) != null)
             {
-                return new ApiErrorResult<bool>("email has exist");
+                return new ApiErrorResult<bool>("Email đã tồn tại hãy dùng email khác!");
             }
 
             string hoTen = request.Ho + " " + request.Ten;
@@ -147,7 +147,8 @@ namespace LucasTimetable.Application.System.Users
             var query = _userManager.Users;
             if (!string.IsNullOrEmpty(request.Keyword))
             {
-                query = query.Where(x => x.UserName.Contains(request.Keyword) || x.HoTen.Contains(request.Keyword));
+                query = query.Where(x => x.UserName.Contains(request.Keyword) || x.HoTen.Contains(request.Keyword)
+                || x.Email.Contains(request.Keyword) || x.PhoneNumber.Contains(request.Keyword));
             }
 
             //3. Paging
