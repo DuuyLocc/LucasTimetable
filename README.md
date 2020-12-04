@@ -135,3 +135,7 @@ Install EF (Entity Framework) core
 - https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-5.0
 ## Lesion 27 - get list user
 - 
+
+## Lesion 30 - details user, paging
+- https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-5.0
+- bootstrap pagination

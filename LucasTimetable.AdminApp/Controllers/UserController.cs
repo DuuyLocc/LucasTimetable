@@ -33,7 +33,7 @@ namespace LucasTimetable.AdminApp.Controllers
             _roleApiClient = roleApiClient;
          }
 
-         public async Task<IActionResult> Index(string keyword, int pageIndex =1, int pageZise = 10)
+         public async Task<IActionResult> Index(string keyword, int pageIndex =1, int pageZise = 5)
          {
              var request  = new GetUserPagingRequest()
              {

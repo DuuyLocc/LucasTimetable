@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LucasTimetable.AdminApp.Controllers.Component
+namespace LucasTimetable.AdminApp.Controllers.Components
 {
     public class PagerViewComponent : ViewComponent
     {
