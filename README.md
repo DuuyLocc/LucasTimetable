@@ -138,4 +138,6 @@ Install EF (Entity Framework) core
 
 ## Lesion 30 - details user, paging
 - https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-5.0
-- bootstrap pagination
+- bootstrap pagination/alerts
+## Lesion 34
+- rendersection/scripts

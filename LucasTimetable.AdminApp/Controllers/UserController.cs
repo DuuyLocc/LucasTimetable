@@ -66,7 +66,7 @@ namespace LucasTimetable.AdminApp.Controllers
             var result = await _userApiClient.RegisterUser(request);
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Success";
+                TempData["result"] = "Thêm mới User thành công!";
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", result.Message);
@@ -104,7 +104,7 @@ namespace LucasTimetable.AdminApp.Controllers
             var result = await _userApiClient.UpdateUser(request.Id, request);
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Cập nhật thành công";
+                TempData["result"] = "Cập nhật User thành công!";
                 return RedirectToAction("Index");
             }
 
@@ -136,7 +136,7 @@ namespace LucasTimetable.AdminApp.Controllers
             var result = await _userApiClient.Delete(request.Id);
             if (result.IsSuccessed)
             {
-                TempData["result"] = "Xóa User thành công!!!";
+                TempData["result"] = "Xóa User thành công!";
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", result.Message);
