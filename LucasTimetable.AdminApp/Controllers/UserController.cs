@@ -19,12 +19,11 @@ using System.Threading.Tasks;
 
 namespace LucasTimetable.AdminApp.Controllers
 {
-    //[Authorize]
     public class UserController : BaseController
     {
          private readonly IUserApiClient _userApiClient;
          private readonly IConfiguration _configuration;
-        private readonly IRoleApiClient _roleApiClient;
+         private readonly IRoleApiClient _roleApiClient;
 
         public UserController(IUserApiClient userApiClient, IConfiguration configuration, IRoleApiClient roleApiClient)
          {
@@ -143,6 +142,7 @@ namespace LucasTimetable.AdminApp.Controllers
             return View(request);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> RoleAssign(Guid id)
         {
@@ -166,7 +166,6 @@ namespace LucasTimetable.AdminApp.Controllers
 
             ModelState.AddModelError("", result.Message);
             var roleAssignRequest = await GetRoleAssignRequest(request.Id);
-
             return View(roleAssignRequest);
         }
 

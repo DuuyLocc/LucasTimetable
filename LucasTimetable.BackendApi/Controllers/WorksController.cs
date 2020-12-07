@@ -14,10 +14,10 @@ namespace LucasTimetable.BackendApi.Controllers
     [ApiController]
     [Authorize]
 
-    public class WorkController : ControllerBase
+    public class WorksController : ControllerBase
     {
         private IWorkSevice _workSevice;
-        public WorkController(IWorkSevice workSevice)
+        public WorksController(IWorkSevice workSevice)
         {
             _workSevice = workSevice;
         }

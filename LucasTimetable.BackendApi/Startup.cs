@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using LucasTimetable.Application.Catalog.Works;
+using LucasTimetable.Application.System.Roles;
 using LucasTimetable.Application.System.Users;
 using LucasTimetable.Data.EF;
 using LucasTimetable.Data.Entities;
@@ -51,6 +52,7 @@ namespace LucasTimetable.BackendApi
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();

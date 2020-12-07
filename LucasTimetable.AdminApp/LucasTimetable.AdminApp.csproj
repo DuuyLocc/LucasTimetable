@@ -21,8 +21,4 @@
     <ProjectReference Include="..\LucasTimetable.ViewModel\LucasTimetable.ViewModel.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Work\" />
-  </ItemGroup>
-
 </Project>

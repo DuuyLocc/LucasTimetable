@@ -48,17 +48,19 @@ namespace LucasTimetable.AdminApp.Controllers
                 ModelState.AddModelError("", token.Message);
                 return View();
             }
-            var userPrincipal = this.ValidateToken(token.ResultObj);
+            var userPrincipal  = this.ValidateToken(token.ResultObj);
             var authProperties = new AuthenticationProperties
             {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(12),
+                ExpiresUtc   = DateTimeOffset.UtcNow.AddHours(10),
                 IsPersistent = false
             };
+
             HttpContext.Session.SetString("Token", token.ResultObj);
             await HttpContext.SignInAsync(
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         userPrincipal,
                         authProperties);
+
             return RedirectToAction("Index", "Home");
         }
 

@@ -29,7 +29,9 @@ namespace LucasTimetable.AdminApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient();
-
+            services.AddSession(option => {
+                            option.IdleTimeout = TimeSpan.FromMinutes(30);
+                        });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                             .AddCookie(options =>
                             {
@@ -40,15 +42,14 @@ namespace LucasTimetable.AdminApp
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
-            services.AddSession(option => {
-                option.IdleTimeout = TimeSpan.FromMinutes(30);
-            });
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<IUserApiClient, UserApiClient>();
             services.AddTransient<IRoleApiClient, RoleApiClient>();
 
             IMvcBuilder builder = services.AddRazorPages();
+
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             #if DEBUG

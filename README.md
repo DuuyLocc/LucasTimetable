@@ -114,6 +114,7 @@ Install EF (Entity Framework) core
 ## Lesion 18 - add Swagger to web api
 - Install Swagger: Swashbuckle.AspNetCore 
 ## Lesion 19 - create restful api for work
+- lý thuyết
 ## Lesion 20 - Image
 ## Lesion 21 - login
 - by web api and jwwt (not save section like MVC it just return jwwt)
@@ -139,5 +140,13 @@ Install EF (Entity Framework) core
 ## Lesion 30 - details user, paging
 - https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-5.0
 - bootstrap pagination/alerts
-## Lesion 34
+## Lesion 33 - 
 - rendersection/scripts
+## Lesion 34 - Gán quyền cho user | Assign role to user
+-   select NEWID();
+
+view components asp.net core
+@await Component.InvokeAsync("Navigation")
+
+WorkPagingRequest k có 
+public List<int> WorkIds { get; set; }
