@@ -1,0 +1,80 @@
+﻿@model LucasTimetable.ViewModel.Catalog.Works.WorkUpdateRequest
+
+@{
+    ViewData["Title"] = "Cập nhật công việc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Cập nhật công việc</h1>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <a class="btn btn-success" asp-action="Index" asp-controller="Work">Về Danh sách công việc</a>
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Tên công việc: </label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label">Mêu tả: </label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Status" class="control-label">Trạng thái: </label><br />
+                            <div class="form-group form-check-inline">
+                                <label asp-for="Status" class="form-check-label" for="exampleRadios2">Cần làm</label>
+                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.todo" checked />
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                            <div class="form-group form-check-inline">
+                                <label asp-for="Status" class="form-check-label" for="exampleRadios2">Đang làm</label>
+                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.doing" />
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                            <div class="form-group form-check-inline">
+                                <label asp-for="Status" class="form-check-label" for="exampleRadios2">Hoàn thành</label>
+                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.done" />
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                        </div>
+                        @* no:0 yes:1 *@
+                        <div class="form-group">
+                            <label asp-for="Priority" class="control-label">Mức độ ưu tiên: </label><br />
+                            <div class="form-group form-check-inline">
+                                <label asp-for="Priority" class="form-check-label" for="exampleRadios2">Không </label>
+                                <input asp-for="Priority" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Priority.no" />
+                                <span asp-validation-for="Priority" class="text-danger"></span>
+                            </div>
+                            <div class="form-group form-check-inline">
+                                <label asp-for="Priority" class="form-check-label" for="exampleRadios2">Có </label>
+                                <input asp-for="Priority" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Priority.yes" />
+                                <span asp-validation-for="Priority" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Deadline" class="control-label">Thời gian hoàn thành: </label>
+                            <input asp-for="Deadline" class="form-control" />
+                            <span asp-validation-for="Deadline" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Lưu" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

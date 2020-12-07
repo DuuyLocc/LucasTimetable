@@ -78,9 +78,9 @@ namespace LucasTimetable.Application.Catalog.Works
                         in _context.Works 
                         select new { w };
 
-            if (!string.IsNullOrEmpty(request.KeyWork))
+            if (!string.IsNullOrEmpty(request.KeyWord))
             {
-                query = query.Where(x => x.w.Name.Contains(request.KeyWork) || x.w.Description.Contains(request.KeyWork));
+                query = query.Where(x => x.w.Name.Contains(request.KeyWord) );
             }
 
             int totalRow = await query.CountAsync();
@@ -100,9 +100,9 @@ namespace LucasTimetable.Application.Catalog.Works
             var pagedResult = new PagedResult<WorkViewModel>()
             {
                 TotalRecords = totalRow,
-                PageIndex = request.PageIndex,
-                PageSize = request.PageSize,
-                Items = data
+                PageIndex    = request.PageIndex,
+                PageSize     = request.PageSize,
+                Items        = data
             };
             return pagedResult;
         }
@@ -128,14 +128,15 @@ namespace LucasTimetable.Application.Catalog.Works
         public async Task<int> Update(int id, WorkUpdateRequest request)
         {
             var work = await _context.Works.FindAsync(id);
+
             if (work == null)
             {
-                throw new LucasTimetable_Exceptions($"Không tìm thấy bản ghi của công việc: {id}!");
+                throw new LucasTimetable_Exceptions($"Không tìm thấy dữ liệu của công việc: {id}!");
             }
 
             work.Name = request.Name;
             work.Description = request.Description;
-            work.Status = request.Status;
+            work.Status   = request.Status;
             work.Priority = request.Priority;
             work.Deadline = request.Deadline;
 

@@ -107,7 +107,7 @@ namespace LucasTimetable.AdminApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", result.Message);
+            ModelState.AddModelError("", "Cập nhật User không thành công!");
             return View(request);
         }
 

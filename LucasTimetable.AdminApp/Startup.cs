@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using LucasTimetable.AdminApp.Services;
+using LucasTimetable.AdminApp.Services.Work;
 using LucasTimetable.ViewModel.System.Users;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +48,7 @@ namespace LucasTimetable.AdminApp
 
             services.AddTransient<IUserApiClient, UserApiClient>();
             services.AddTransient<IRoleApiClient, RoleApiClient>();
+            services.AddTransient<IWorkApiClient, WorkApiClient>();
 
             IMvcBuilder builder = services.AddRazorPages();
 

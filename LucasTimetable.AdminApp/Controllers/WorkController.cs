@@ -1,4 +1,6 @@
 ﻿using LucasTimetable.AdminApp.Services;
+using LucasTimetable.AdminApp.Services.Work;
+using LucasTimetable.ViewModel.Catalog.Works;
 using LucasTimetable.ViewModel.Common;
 using LucasTimetable.ViewModel.System.Users;
 using Microsoft.AspNetCore.Authentication;
@@ -21,33 +23,33 @@ namespace LucasTimetable.AdminApp.Controllers
 {
     public class WorkController : BaseController
     {
-        private readonly IUserApiClient _userApiClient;
+        private readonly IWorkApiClient _workApiClient;
         private readonly IConfiguration _configuration;
 
 
-        public UserController(IUserApiClient userApiClient, IConfiguration configuration)
+        public WorkController(IWorkApiClient workApiClient, IConfiguration configuration)
         {
-            _userApiClient = userApiClient;
+            _workApiClient = workApiClient;
             _configuration = configuration;
         }
 
         public async Task<IActionResult> Index(string keyword, int pageIndex = 1, int pageZise = 5)
         {
-            var request = new GetUserPagingRequest()
+            
+            var request = new WorkPagingRequest()
             {
-                Keyword = keyword,
+                KeyWord   = keyword,
                 PageIndex = pageIndex,
-                PageSize = pageZise
+                PageSize  = pageZise
             };
-            var data = await _userApiClient.GetUsersPaging(request);
-
-            ViewBag.Keyword = keyword;
+            var data = await _workApiClient.GetWorkPaging(request);
+            ViewBag.keyword = keyword;
 
             if (TempData["result"] != null)
             {
                 ViewBag.SuccessMessage = TempData["result"];
             }
-            return View(data.ResultObj);
+            return View(data);
         }
 
         [HttpGet]
@@ -57,36 +59,34 @@ namespace LucasTimetable.AdminApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(RegisterRequest request)
+        public async Task<IActionResult> Create([FromForm] WorkCreateRequest request)
         {
             if (!ModelState.IsValid)
-                return View();
-            var result = await _userApiClient.RegisterUser(request);
-            if (result.IsSuccessed)
+                return View(request);
+
+            var result = await _workApiClient.Create(request);
+            if (result)
             {
-                TempData["result"] = "Thêm mới User thành công!";
+                TempData["result"] = "Thêm mới công việc thành công!";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", result.Message);
+            ModelState.AddModelError("", "Thêm công việc thất bại!");
             return View(request);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(Guid id)
+        public async Task<IActionResult> Edit(string id)
         {
-            var result = await _userApiClient.GetById(id);
-            if (result.IsSuccessed)
+            var result = await _workApiClient.GetById(id);
+            if (result != null)
             {
-                var user = result.ResultObj;
-                var updateRequest = new UserUpdateRequest()
+                var updateRequest = new WorkUpdateRequest()
                 {
-                    Ho = user.Ho,
-                    Ten = user.Ten,
-                    HoTen = user.Ho + user.Ten,
-                    Email = user.Email,
-                    NgaySinh = user.NgaySinh,
-                    SoDienThoai = user.SoDienThoai,
-                    Id = id
+                    Name        = result.Name,
+                    Description = result.Description,
+                    Status      = result.Status,
+                    Priority    = result.Priority,
+                    Deadline    = result.Deadline
                 };
                 return View(updateRequest);
             }
@@ -94,50 +94,43 @@ namespace LucasTimetable.AdminApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(UserUpdateRequest request)
+        public async Task<IActionResult> Edit(int id, WorkUpdateRequest request)
         {
             if (!ModelState.IsValid)
                 return View();
 
-            var result = await _userApiClient.UpdateUser(request.Id, request);
-            if (result.IsSuccessed)
+            var result = await _workApiClient.Update(id, request);
+            if (result)
             {
-                TempData["result"] = "Cập nhật User thành công!";
+                TempData["result"] = "Cập nhật công việc thành công!";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", result.Message);
+            ModelState.AddModelError("", "Cập nhật công việc không thành công!");
             return View(request);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(Guid id)
+        public IActionResult Delete(int Id)
         {
-            var result = await _userApiClient.GetById(id);
-            return View(result.ResultObj);
-        }
-
-        [HttpGet]
-        public IActionResult Delete(Guid Id)
-        {
-            return View(new UserDeleteRequest()
+            return View(new WorkDeleteRequest()
             {
                 Id = Id
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(UserDeleteRequest request)
+        public async Task<IActionResult> Delete(WorkDeleteRequest request)
         {
             if (!ModelState.IsValid)
                 return View();
-            var result = await _userApiClient.Delete(request.Id);
-            if (result.IsSuccessed)
+            var result = await _workApiClient.Delete(request.Id);
+            if (result)
             {
-                TempData["result"] = "Xóa User thành công!";
+                TempData["result"] = "Xóa công việc thành công!";
                 return RedirectToAction("Index");
             }
-            ModelState.AddModelError("", result.Message);
+            ModelState.AddModelError("", "Xóa công việc không thành công!");
             return View(request);
         }
     }

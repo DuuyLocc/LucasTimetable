@@ -7,6 +7,6 @@ namespace LucasTimetable.ViewModel.Catalog.Works
 {
     public class WorkPagingRequest : PagingRequestBase
     {
-        public string KeyWork { get; set; }
+        public string KeyWord { get; set; }
     }
 }

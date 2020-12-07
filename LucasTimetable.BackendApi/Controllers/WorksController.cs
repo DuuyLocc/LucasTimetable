@@ -36,7 +36,7 @@ namespace LucasTimetable.BackendApi.Controllers
         {
             var result = await _workSevice.GetAllpaging(request);
             if (result == null)
-                return BadRequest("Not found anything");
+                return BadRequest("không tìm thấy gì...");
             return Ok(result);
         }
 
@@ -51,7 +51,7 @@ namespace LucasTimetable.BackendApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm]WorkCreateRequest request)
+        public async Task<IActionResult> Create([FromBody] WorkCreateRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -61,10 +61,10 @@ namespace LucasTimetable.BackendApi.Controllers
                 return BadRequest();
 
             var work = await _workSevice.GetById(workID);
-            return CreatedAtAction(nameof(GetById),new { id = workID },work);
+            return CreatedAtAction(nameof(GetById), new { id = workID },work);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] WorkUpdateRequest request)
         {
             if (!ModelState.IsValid)
@@ -73,6 +73,7 @@ namespace LucasTimetable.BackendApi.Controllers
             var affectedResult = await _workSevice.Update(id, request);
             if (affectedResult == 0)
                 return BadRequest();
+
             return Ok();
         }
 

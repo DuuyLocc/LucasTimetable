@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LucasTimetable.ViewModel.Catalog.Works;
+using LucasTimetable.ViewModel.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,12 +9,17 @@ namespace LucasTimetable.AdminApp.Services.Work
 {
     public interface IWorkApiClient
     {
-        Task<ApiResult<PagedResult<WorkViewModel>>> GetWorkPaging(WorkPagingRequest request);
+        Task<PagedResult<WorkViewModel>> GetWorkPaging(WorkPagingRequest request);
 
-        Task<ApiResult<bool>> UpdateWork(Guid id, UserUpdateRequest request);
+        Task<bool> Create(WorkCreateRequest request);
 
-        Task<ApiResult<UserViewModel>> GetById(Guid id);
+        Task<bool> Update(int id, WorkUpdateRequest request);
 
-        Task<ApiResult<bool>> DeleteWork(Guid id);
+        Task<bool> Delete(int workId);
+
+        Task<WorkViewModel> GetById(string workId);
+
+        Task<List<WorkViewModel>> GetAll();
+
     }
 }
