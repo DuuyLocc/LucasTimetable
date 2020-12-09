@@ -34,17 +34,16 @@
                             <label asp-for="Status" class="control-label">Trạng thái: </label><br />
                             <div class="form-group form-check-inline">
                                 <label asp-for="Status" class="form-check-label" for="exampleRadios2">Cần làm</label>
-                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.todo" checked/>
-                                <span asp-validation-for="Status" class="text-danger"></span>
+                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.todo" checked />
                             </div>
                             <div class="form-group form-check-inline">
                                 <label asp-for="Status" class="form-check-label" for="exampleRadios2">Đang làm</label>
-                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.doing"/>
-                                <span asp-validation-for="Status" class="text-danger"></span>
+                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.doing" />
                             </div>
+                            <span asp-validation-for="Status" class="text-danger"></span>
                             <div class="form-group form-check-inline">
                                 <label asp-for="Status" class="form-check-label" for="exampleRadios2">Hoàn thành</label>
-                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.done"  />
+                                <input asp-for="Status" class="form-check-input" style="margin-left:5px" type="radio" id="exampleRadios2" value="@LucasTimetable.Data.Enums.Status.done" />
                                 <span asp-validation-for="Status" class="text-danger"></span>
                             </div>
                         </div>
@@ -64,7 +63,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Deadline" class="control-label">Thời gian hoàn thành: </label>
-                            <input asp-for="Deadline" class="form-control" />
+                            <input asp-for="Deadline" class="form-control" type="date" value="2020-10-29"/>
                             <span asp-validation-for="Deadline" class="text-danger"></span>
                         </div>
                         <div class="form-group">

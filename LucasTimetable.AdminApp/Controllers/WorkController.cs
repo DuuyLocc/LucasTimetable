@@ -63,7 +63,7 @@ namespace LucasTimetable.AdminApp.Controllers
         {
             if (!ModelState.IsValid)
                 return View(request);
-
+            
             var result = await _workApiClient.Create(request);
             if (result)
             {
