@@ -1,13 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using LucasTimetable.ViewModel.Common;
+@using LucasTimetable.ViewModel.Catalog.Works;
+@model PagedResult<WorkViewModel>
+
+@{
+    ViewData["Title"] = "Trang chủ";
 }
 
 <!-- main content -->
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4" >
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800" style="margin-left:460px;font-weight:bold">DANH SÁCH CÔNG VIỆC</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a href="https://localhost:5003/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-download fa-sm text-white-50"></i> Tải về
         </a>
     </div>
@@ -43,7 +47,6 @@
     </div>
 
     <!-- Content Main Row -->
-
     <!-- Content Row -->
     <div class="row">
 
@@ -52,7 +55,11 @@
             <div class="card border-left-primary shadow h-100">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Số lượng: </h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Số lượng: 
+                        <div class="float-sm-right" style="margin-left:5px">
+                            <p>  </p>
+                        </div>
+                    </h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,7 +77,9 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="">
+                    <!-- DANH SÁCH CÔNG VIỆC CÓ STATUS = TODO -->
+                    <!-- onload thì load ra -->
+                    <div class="row">
 
                     </div>
                 </div>
@@ -100,6 +109,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <!-- DANH SÁCH CÔNG VIỆC CÓ STATUS = DOING -->
                     <div class="">
 
                     </div>
@@ -130,6 +140,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <!-- DANH SÁCH CÔNG VIỆC CÓ STATUS = DONE -->
                     <div class="">
 
                     </div>

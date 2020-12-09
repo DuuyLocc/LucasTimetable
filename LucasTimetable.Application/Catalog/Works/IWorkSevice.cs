@@ -20,5 +20,6 @@ namespace LucasTimetable.Application.Catalog.Works
         Task<List<WorkViewModel>> GetAll();
 
         Task<PagedResult<WorkViewModel>> GetAllpaging(WorkPagingRequest request);
+
     }
 }

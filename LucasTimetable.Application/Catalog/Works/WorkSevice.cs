@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LucasTimetable.Application.Catalog.Works
 {
@@ -124,6 +125,7 @@ namespace LucasTimetable.Application.Catalog.Works
 
             return works;
         }
+
 
         public async Task<int> Update(int id, WorkUpdateRequest request)
         {
