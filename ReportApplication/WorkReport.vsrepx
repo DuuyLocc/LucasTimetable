@@ -13,7 +13,7 @@
   <Bands>
     <Item1 Ref="8" ControlType="TopMarginBand" Name="GroupHeader" HeightF="289.861145">
       <Controls>
-        <Item1 Ref="9" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextFormatString="{0:h:mm tt dd MMMM yyyy}" TextAlignment="MiddleRight" SizeF="263.017517,23" LocationFloat="576.9825,16.1841812" Font="Times New Roman, 12pt, style=Italic" Padding="2,2,0,0,96">
+        <Item1 Ref="9" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextFormatString="{0:h:mm tt dd MMMM yyyy}" TextAlignment="MiddleRight" SizeF="263.017517,23" LocationFloat="576.9825,16.1841812" Font="Times New Roman, 12pt, style=Italic" Padding="2,2,0,0,100">
           <StylePriority Ref="10" UseFont="false" UseTextAlignment="false" />
         </Item1>
         <Item2 Ref="11" ControlType="XRLabel" Name="label9" Multiline="true" Text="Ứng dụng quản lý thời gian biểu: LucasTimetable" TextAlignment="TopCenter" SizeF="487.916443,23" LocationFloat="9.999994,16.1841812" Font="Times New Roman, 16pt" Padding="2,2,0,0,100">
@@ -121,7 +121,7 @@
         <Item6 Ref="63" ControlType="XRLabel" Name="label5" Multiline="true" Text="Status 0 là công việc chưa hoàn thành" TextAlignment="MiddleLeft" SizeF="221.531326,23.0000038" LocationFloat="54.4520264,25.2549915" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100">
           <StylePriority Ref="64" UseFont="false" UseTextAlignment="false" />
         </Item6>
-        <Item7 Ref="65" ControlType="XRLabel" Name="label13" Multiline="true" Text="Priority 0 là công việc không ưu tiên" TextAlignment="MiddleLeft" SizeF="206.716522,23" LocationFloat="291.199921,48.2549438" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100">
+        <Item7 Ref="65" ControlType="XRLabel" Name="label13" Multiline="true" Text="Priority 1 là công việc không ưu tiên" TextAlignment="MiddleLeft" SizeF="206.716522,23" LocationFloat="291.199921,48.2549438" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100">
           <StylePriority Ref="66" UseFont="false" UseTextAlignment="false" />
         </Item7>
       </Controls>
