@@ -2,6 +2,7 @@
 ## Link about project
 - http://www.lucasitstore.tk/
 - https://docs.microsoft.com/en-us/ef/core/get-started/install/
+- https://docs.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
 - https://www.learnentityframeworkcore.com/configuration/fluent-api
 
 ## Group trao đổi
@@ -9,7 +10,7 @@
 - Góc IT - Cùng học lập trình
 
 ## ANOTHERS
-- Crystal report
+- Crystal report -> Xtra report
 
 ## Lesion 1 - Introduce ASP.NET MVC core source
 Technologies
@@ -117,7 +118,7 @@ Install EF (Entity Framework) core
 - lý thuyết
 ## Lesion 20 - Image
 ## Lesion 21 - login
-- by web api and jwwt (not save section like MVC it just return jwwt)
+- by web api and jwt (not save section like MVC it just return jwt)
 - done register, login admin
 ## Lesion 22 - Add Authorization to Swagger
 - AddSwaggerGen: AddSecurityDefinition, AddSecurityRequirement
@@ -144,6 +145,8 @@ Install EF (Entity Framework) core
 - rendersection/scripts
 ## Lesion 34 - Gán quyền cho user | Assign role to user
 -   select NEWID();
+
+
 
 view components asp.net core
 @await Component.InvokeAsync("Navigation")
