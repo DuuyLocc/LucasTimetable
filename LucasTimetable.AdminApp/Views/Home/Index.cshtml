@@ -1,0 +1,153 @@
+﻿@using LucasTimetable.ViewModel.Common;
+@using LucasTimetable.ViewModel.Catalog.Works;
+@model PagedResult<WorkViewModel>
+
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<!-- main content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800" style="margin-left:460px;font-weight:bold">DANH SÁCH CÔNG VIỆC</h1>
+        <a href="https://localhost:5003/" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-download fa-sm text-white-50"></i> Tải về
+        </a>
+    </div>
+
+    <!-- Content Main Row -->
+    <div class="row">
+
+        <!-- CV CẦN LÀM -->
+        <div class="col-xl-4 col-lg-6 mb-4">
+            <div class="card bg-primary text-white text-center shadow">
+                <div class="card-body">
+                    CẦN LÀM
+                </div>
+            </div>
+        </div>
+        <!-- CV ĐANG LÀM -->
+        <div class="col-xl-4 col-lg-6 mb-4">
+            <div class="card bg-success text-white text-center shadow">
+                <div class="card-body">
+                    ĐANG LÀM
+                </div>
+            </div>
+        </div>
+        <!-- CV HOÀN THÀNH -->
+        <div class="col-xl-4 col-lg-6 mb-4">
+            <div class="card bg-warning text-white text-center shadow">
+                <div class="card-body">
+                    HOÀN THÀNH
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Content Main Row -->
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- nội dung cv cần làm -->
+        <div class="col-xl-4 ">
+            <div class="card border-left-primary shadow h-100">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Số lượng: 
+                        <div class="float-sm-right" style="margin-left:5px">
+                            <p>  </p>
+                        </div>
+                    </h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header text-center">Tùy chọn</div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- DANH SÁCH CÔNG VIỆC CÓ STATUS = TODO -->
+                    <!-- onload thì load ra -->
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- nội dung cv đang làm -->
+        <div class="col-xl-4 ">
+            <div class="card border-left-success shadow h-100">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-success">Số lượng: </h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header text-center">Tùy chọn</div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- DANH SÁCH CÔNG VIỆC CÓ STATUS = DOING -->
+                    <div class="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- nội dung cv hoàn thành -->
+        <div class="col-xl-4 ">
+            <div class="card border-left-warning shadow h-100">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-warning">Số lượng: </h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header text-center">Tùy chọn</div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">1</a>
+                            <a class="dropdown-item" href="#">2</a>
+                            <a class="dropdown-item" href="#">3</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- DANH SÁCH CÔNG VIỆC CÓ STATUS = DONE -->
+                    <div class="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

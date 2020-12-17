@@ -3,12 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasTimetable.WebApp", "LucasTimetable.WebApp\LucasTimetable.WebApp.csproj", "{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{01494D14-D587-432E-98C6-117AE2067451}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{01494D14-D587-432E-98C6-117AE2067451}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.Data", "LucasTimetable.Data\LucasTimetable.Data.csproj", "{307F430A-C05A-4A00-BB05-D0F24102E063}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.Application", "LucasTimetable.Application\LucasTimetable.Application.csproj", "{9B3D4171-8D95-4A4A-90E2-F826A2C01861}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.ViewModel", "LucasTimetable.ViewModel\LucasTimetable.ViewModel.csproj", "{57F0E06B-E04A-4257-B8B9-8C446BDC6066}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.BackendApi", "LucasTimetable.BackendApi\LucasTimetable.BackendApi.csproj", "{118599A1-E0E2-43AC-BD4D-139466A1C87D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasTimetable.AdminApp", "LucasTimetable.AdminApp\LucasTimetable.AdminApp.csproj", "{EDBE5D91-E23D-4409-A707-3639A5B17B75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportApplication", "ReportApplication\ReportApplication.csproj", "{9379379D-A232-49F9-99A6-17B08ED1EDB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Hosts", "1. Hosts", "{3A84FE1B-6900-42F9-93EC-5A7D2685EC0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Domains", "2. Domains", "{3EDC6FD2-DBD6-4C7C-9618-6BC050136AEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infrastructure", "3. Infrastructure", "{0306CD03-3C3B-4FFE-859E-A4CCA36E8CC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +32,41 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1AF1932F-61DE-498E-B08C-FFA2B87CEFC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307F430A-C05A-4A00-BB05-D0F24102E063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57F0E06B-E04A-4257-B8B9-8C446BDC6066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F0E06B-E04A-4257-B8B9-8C446BDC6066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F0E06B-E04A-4257-B8B9-8C446BDC6066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F0E06B-E04A-4257-B8B9-8C446BDC6066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118599A1-E0E2-43AC-BD4D-139466A1C87D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9379379D-A232-49F9-99A6-17B08ED1EDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9379379D-A232-49F9-99A6-17B08ED1EDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9379379D-A232-49F9-99A6-17B08ED1EDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9379379D-A232-49F9-99A6-17B08ED1EDB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{307F430A-C05A-4A00-BB05-D0F24102E063} = {3EDC6FD2-DBD6-4C7C-9618-6BC050136AEF}
+		{9B3D4171-8D95-4A4A-90E2-F826A2C01861} = {3EDC6FD2-DBD6-4C7C-9618-6BC050136AEF}
+		{57F0E06B-E04A-4257-B8B9-8C446BDC6066} = {0306CD03-3C3B-4FFE-859E-A4CCA36E8CC7}
+		{118599A1-E0E2-43AC-BD4D-139466A1C87D} = {3A84FE1B-6900-42F9-93EC-5A7D2685EC0C}
+		{EDBE5D91-E23D-4409-A707-3639A5B17B75} = {3A84FE1B-6900-42F9-93EC-5A7D2685EC0C}
+		{9379379D-A232-49F9-99A6-17B08ED1EDB0} = {3A84FE1B-6900-42F9-93EC-5A7D2685EC0C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D506440-2622-4C75-8320-F3106D89F490}

@@ -1,0 +1,4 @@
+﻿@using ReportApplication
+@using ReportApplication.Models
+@using DevExpress.AspNetCore
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
