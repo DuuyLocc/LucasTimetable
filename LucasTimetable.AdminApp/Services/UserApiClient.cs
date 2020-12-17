@@ -50,6 +50,7 @@ namespace LucasTimetable.AdminApp.Services
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessions);
             var response = await client.DeleteAsync($"/api/users/{id}");
             var body = await response.Content.ReadAsStringAsync();
+                       
             if (response.IsSuccessStatusCode)
                 return JsonConvert.DeserializeObject<ApiSuccessResult<bool>>(body);
 

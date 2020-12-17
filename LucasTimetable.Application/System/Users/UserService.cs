@@ -239,8 +239,11 @@ namespace LucasTimetable.Application.System.Users
             {
                 return new ApiErrorResult<bool>("User không tồn tại");
             }
-            var reult = await _userManager.DeleteAsync(user);
-            if (reult.Succeeded)
+            
+            var result = await _userManager.DeleteAsync(user);
+            // xuống tới đây là lỗi rồi stop luôn
+            // khi ràng buộc khóa ngoại thì nên xài Cascade Delete để khi xóa ở bảng cha thì các bảng con có FK sẽ bị xóa theo
+            if (result.Succeeded)
                 return new ApiSuccessResult<bool>();
 
             return new ApiErrorResult<bool>("Xóa không thành công");
